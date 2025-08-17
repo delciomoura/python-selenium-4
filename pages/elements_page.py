@@ -71,3 +71,9 @@ class ElementsPage:
             EC.element_to_be_clickable(
                 (By.ID, "sigIn"))
         )
+    
+    def get_element_text_validation(self):
+        return WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, '[class="has-text-danger"]'))
+        )

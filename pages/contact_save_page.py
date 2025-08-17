@@ -35,3 +35,6 @@ class ContactSavePage:
     
     def click_remove_contact_button(self):
         self.elements.get_remove_button().click()
+    
+    def get_element_text_validation_text(self):
+        return self.elements.get_element_text_validation().text
