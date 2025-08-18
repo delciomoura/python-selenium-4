@@ -2,13 +2,14 @@ from fixtures.data_mass import data
 import pytest
 
 
-def test_save_contact(setup):
+def test_save_contact(setup, create_user):
     driver, contact_page, asserts = setup
+    user = create_user
 
     contact_page.visit_login_screen()
     asserts.assert_login_page_title(data["message"]["expectTitle"])
-    contact_page.login(data["parameters"]["validUser"],
-                       data["parameters"]["validPassword"])
+    contact_page.login(user["email"],
+                       user["password"])
 
     asserts.assert_main_title(data["message"]["expectMessageAfterLogin"])
     contact_page.click_add_new_contact_button()
@@ -33,13 +34,14 @@ def test_save_contact(setup):
          "", data["message"]["expectNoticeDescription"]),
     ]
 )
-def test_save_contact_with_invalid_fields(setup, name, number, description, expected_message):
+def test_save_contact_with_invalid_fields(setup, name, number, description, expected_message, create_user):
     driver, contact_page, asserts = setup
+    user = create_user
 
     contact_page.visit_login_screen()
     asserts.assert_login_page_title(data["message"]["expectTitle"])
-    contact_page.login(data["parameters"]["validUser"],
-                       data["parameters"]["validPassword"])
+    contact_page.login(user["email"],
+                       user["password"])
 
     asserts.assert_main_title(data["message"]["expectMessageAfterLogin"])
     contact_page.click_add_new_contact_button()
