@@ -3,7 +3,7 @@ import pytest
 
 
 def test_save_contact(setup, create_user):
-    driver, contact_page, asserts = setup
+    contact_page, asserts = setup
     user = create_user
 
     contact_page.visit_login_screen()
@@ -35,7 +35,7 @@ def test_save_contact(setup, create_user):
     ]
 )
 def test_save_contact_with_invalid_fields(setup, name, number, description, expected_message, create_user):
-    driver, contact_page, asserts = setup
+    contact_page, asserts = setup
     user = create_user
 
     contact_page.visit_login_screen()

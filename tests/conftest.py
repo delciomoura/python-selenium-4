@@ -13,14 +13,14 @@ def setup():
     driver = webdriver.Chrome()
     contact_page = ContactSavePage(driver)
     asserts = ContactPageAsserts(driver, contact_page)
-    yield driver, contact_page, asserts
+    yield contact_page, asserts
     driver.quit()
 
 BASE_URL = "http://localhost:3000"
 
 @pytest.fixture
 def create_user():
-    """Cria um usuário na API antes do teste"""
+    """Create a user in the API before testing"""
     user = {
         "email": faker.email(),
         "password": "delcio123"
